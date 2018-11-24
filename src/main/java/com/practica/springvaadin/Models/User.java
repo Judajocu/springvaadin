@@ -2,11 +2,11 @@ package com.practica.springvaadin.Models;
 
 public class User {
 
-    String email;
-    String firstname;
-    String lastname;
-    String password;
-    boolean looged;
+    private String email;
+    private String firstname;
+    private String lastname;
+    private String password;
+    private boolean looged;
 
     public User(String email, String firstname, String lastname, String password, boolean looged) {
         this.email = email;
