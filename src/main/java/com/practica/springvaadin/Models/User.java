@@ -16,12 +16,12 @@ public class User implements Serializable {
     private String password;
     private boolean looged;
 
-    public User(String email, String firstname, String lastname, String password, boolean looged) {
+    public User(String email, String firstname, String lastname, String password) {
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
-        this.looged = looged;
+        this.setLooged(false);
     }
 
     public User() {
