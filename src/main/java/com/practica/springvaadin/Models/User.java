@@ -1,7 +1,15 @@
 package com.practica.springvaadin.Models;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
+
+    @Id
     private String email;
     private String firstname;
     private String lastname;
@@ -15,12 +23,8 @@ public class User {
         this.password = password;
         this.looged = looged;
     }
+
     public User() {
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.looged = looged;
     }
 
     public String getEmail() {

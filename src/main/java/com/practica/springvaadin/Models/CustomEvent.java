@@ -1,35 +1,52 @@
 package com.practica.springvaadin.Models;
 
+import com.vaadin.ui.components.calendar.event.CalendarEvent;
+import com.vaadin.ui.components.calendar.event.EditableCalendarEvent;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.context.annotation.ApplicationScope;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class CustomEvent {
+@Entity
+@ApplicationScope
+@Table(name = "event")
+public class CustomEvent implements Serializable, CalendarEvent, EditableCalendarEvent, CalendarEvent.EventChangeNotifier {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private String name;
+    @Column
+    @Size(min = 5, max = 100)
+    private String caption;
     private String description;
+    private String styleName;
+    @DateTimeFormat
+    private Date end;
+    @DateTimeFormat
     private Date start;
-    private Date ends;
-    private boolean entireday;
-    private boolean notification;
 
-    public CustomEvent(int id, String name, String description, Date start, Date ends, boolean entireday, boolean notification) {
-        this.id = id;
-        this.name = name;
+    private boolean isallDay;
+    private boolean notified;
+
+    private List<EventChangeListener> listeners = new ArrayList<EventChangeListener>();
+
+    public CustomEvent(String caption, String description, Date end, Date start, String styleName, boolean isallDay) {
+        this.caption = caption;
         this.description = description;
+        this.end = end;
         this.start = start;
-        this.ends = ends;
-        this.entireday = entireday;
-        this.notification = notification;
+        this.styleName = styleName;
+        this.isallDay = isallDay;
+        this.setNotified(false);
     }
 
-    public CustomEvent() {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.start = start;
-        this.ends = ends;
-        this.entireday = entireday;
-        this.notification = notification;
+    public CustomEvent(String caption, String description, boolean isAllDay, Date start, Date end) {
     }
 
     public int getId() {
@@ -40,51 +57,81 @@ public class CustomEvent {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public void setCaption(String caption) {
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
+    @Override
     public void setDescription(String description) {
-        this.description = description;
+
     }
 
-    public Date getStart() {
-        return start;
+    @Override
+    public void setEnd(Date end) {
+
     }
 
+    @Override
     public void setStart(Date start) {
-        this.start = start;
+
     }
 
-    public Date getEnds() {
-        return ends;
+    @Override
+    public void setStyleName(String styleName) {
+
     }
 
-    public void setEnds(Date ends) {
-        this.ends = ends;
+    @Override
+    public void setAllDay(boolean isAllDay) {
+
     }
 
-    public boolean isEntireday() {
-        return entireday;
+    @Override
+    public Date getStart() {
+        return null;
     }
 
-    public void setEntireday(boolean entireday) {
-        this.entireday = entireday;
+    @Override
+    public Date getEnd() {
+        return null;
     }
 
-    public boolean isNotification() {
-        return notification;
+    @Override
+    public String getCaption() {
+        return null;
     }
 
-    public void setNotification(boolean notification) {
-        this.notification = notification;
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public String getStyleName() {
+        return null;
+    }
+
+    @Override
+    public boolean isAllDay() {
+        return false;
+    }
+
+    public boolean isNotified() {
+        return notified;
+    }
+
+    public void setNotified(boolean notified) {
+        this.notified = notified;
+    }
+
+    @Override
+    public void addEventChangeListener(EventChangeListener listener) {
+
+    }
+
+    @Override
+    public void removeEventChangeListener(EventChangeListener listener) {
+
     }
 }

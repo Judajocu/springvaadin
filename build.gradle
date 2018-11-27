@@ -32,18 +32,21 @@ ext {
 }
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-    implementation('org.springframework.boot:spring-boot-starter-freemarker')
-    implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation('com.vaadin:vaadin-spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-mail')
+    //compile('org.springframework.boot:spring-boot-starter-security')
+    compile('com.vaadin:vaadin-spring-boot-starter:1.0.2')
+    compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.vaadin.addons:numberfield:0.5.1')
-    compile('com.sendgrid:sendgrid-java:3.1.0')
-    runtimeOnly('com.h2database:h2')
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    runtime('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    // https://mvnrepository.com/artifact/com.sendgrid/sendgrid-java
+    compile 'com.sendgrid:sendgrid-java:3.1.0'
 }
 
 dependencyManagement {
     imports {
-        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+        mavenBom "com.vaadin:vaadin-bom:7.7.3"
     }
 }
