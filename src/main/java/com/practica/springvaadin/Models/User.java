@@ -66,4 +66,9 @@ public class User implements Serializable {
     public void setLooged(boolean looged) {
         this.looged = looged;
     }
+
+    public String getfullName()
+    {
+        return firstname + " " + lastname;
+    }
 }
