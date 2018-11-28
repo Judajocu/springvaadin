@@ -2,10 +2,12 @@ package com.practica.springvaadin.frontend.views;
 
 import com.practica.springvaadin.Models.User;
 import com.practica.springvaadin.Services.AccessService;
+import com.vaadin.annotations.Theme;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import sun.security.util.PendingException;
 
 import javax.persistence.PersistenceException;
 
+@SpringUI(path = "/userInfo")
+@Theme("valo")
 public class Userview extends UI {
 
     @Autowired
