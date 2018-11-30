@@ -47,6 +47,9 @@ public class SenderModal extends FormLayout {
                     request.endpoint = "mail/send";
                     request.body = mail.build();
                     Response response = sendGrid.api(request);
+                    System.out.println(response.statusCode);
+                    System.out.println(response.body);
+                    System.out.println(response.headers);
                 }
                 catch (Exception e)
                 {

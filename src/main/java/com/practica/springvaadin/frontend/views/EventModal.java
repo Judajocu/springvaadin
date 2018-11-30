@@ -34,14 +34,14 @@ public class EventModal extends FormLayout {
     {
         start.setValue(startD);
         end.setValue(endD);
-
+        setup();
     }
 
     public EventModal()
     {
         start.setValue(new Date());
         end.setValue(new Date());
-
+        setup();
     }
     private void setup()
     {
@@ -83,7 +83,7 @@ public class EventModal extends FormLayout {
          subject.setCaption("Asunto:");
          description.setCaption("Contenido");
 
-         addComponents(subject, description, start, end);
+         addComponents(subject, description, start, end, buttons);
     }
 
     public void setDates(Date startD, Date endD)

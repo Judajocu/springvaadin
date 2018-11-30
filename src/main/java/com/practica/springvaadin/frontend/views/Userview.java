@@ -35,7 +35,7 @@ public class Userview extends UI {
         {
             getUI().getPage().setLocation("/");
         }
-        else if (!accessService.fetchAllRegisteredUser().isEmpty())
+        else if (!accessService.fetchAllRegisteredUser().get(0).isLooged())
         {
             getUI().getPage().setLocation("/");
         }
@@ -63,9 +63,9 @@ public class Userview extends UI {
         horizontalLayout.setSpacing(true);
         horizontalLayout.setMargin(true);
         verticalLayout.setSizeFull();
-        verticalLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+        verticalLayout.setDefaultComponentAlignment(Alignment.TOP_CENTER);
         horizontalLayout.setSizeFull();
-        horizontalLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+        horizontalLayout.setDefaultComponentAlignment(Alignment.TOP_CENTER);
         setContent(verticalLayout);
     }
 
@@ -87,7 +87,7 @@ public class Userview extends UI {
         calendar.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
         logOut.setIcon(FontAwesome.XING);
-        calendar.setIcon(FontAwesome.XING);
+        calendar.setIcon(FontAwesome.CALENDAR);
 
         layout.addComponents(head, logOut, calendar);
 

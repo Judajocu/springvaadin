@@ -31,7 +31,9 @@ public class Login extends UI {
         }
         else
         {
-
+            setup();
+            Head();
+            Form();
         }
     }
 
@@ -43,7 +45,7 @@ public class Login extends UI {
         verticalLayout.setSpacing(true);
         verticalLayout.setMargin(true);
         verticalLayout.setSizeFull();
-        verticalLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+        verticalLayout.setDefaultComponentAlignment(Alignment.TOP_CENTER);
         setContent(verticalLayout);
     }
 
@@ -59,7 +61,7 @@ public class Login extends UI {
         submit.setIcon(FontAwesome.PLUS);
 
         if (accessService.fetchAllRegisteredUser().isEmpty())
-            verticalLayout.addComponents(email,pass,name,lastname);
+            verticalLayout.addComponents(email,pass,name,lastname, submit);
         else
             verticalLayout.addComponents(email,pass,submit);
 

@@ -74,7 +74,7 @@ public class Mainview extends UI {
         verticalLayout.setSpacing(true);
         verticalLayout.setMargin(true);
         verticalLayout.setSizeFull();
-        verticalLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+        verticalLayout.setDefaultComponentAlignment(Alignment.TOP_CENTER);
         setContent(verticalLayout);
     }
 
@@ -137,7 +137,7 @@ public class Mainview extends UI {
         info.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                getUI().getPage().setLocation("userInfo");
+                getUI().getPage().setLocation("/userInfo");
             }
         });
 

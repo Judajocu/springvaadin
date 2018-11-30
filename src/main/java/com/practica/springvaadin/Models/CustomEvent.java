@@ -34,6 +34,7 @@ public class CustomEvent implements Serializable, CalendarEvent, EditableCalenda
     private boolean isallDay;
     private boolean notified;
 
+    @Transient
     private List<EventChangeListener> listeners = new ArrayList<EventChangeListener>();
 
     public CustomEvent(String caption, String description, Date end, Date start, String styleName, boolean isallDay) {
