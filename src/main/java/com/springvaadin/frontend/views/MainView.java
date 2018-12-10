@@ -9,7 +9,9 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.*;
 import com.vaadin.ui.components.calendar.CalendarComponentEvents;
 import com.vaadin.ui.components.calendar.event.EditableCalendarEvent;
@@ -23,6 +25,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+@UIScope
+@SpringComponent
 @SpringUI(path = "/calendar")
 @Theme("valo")
 public class MainView extends UI {
@@ -39,6 +43,7 @@ public class MainView extends UI {
 
 
     private VerticalLayout vertical = new VerticalLayout();
+
     public static Calendar calendar = new Calendar();
 
     @Autowired
@@ -215,7 +220,6 @@ public class MainView extends UI {
         calendar.setFirstVisibleHourOfDay(6);
         calendar.setLastVisibleHourOfDay(20);
         calendar.setSizeFull();
-
         vertical.addComponent(calendar);
         vertical.setExpandRatio(calendar, 1.0f);
 

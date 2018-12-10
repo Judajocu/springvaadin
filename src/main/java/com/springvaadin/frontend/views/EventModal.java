@@ -4,6 +4,7 @@ import com.springvaadin.service.EventService;
 import com.springvaadin.model.CustomEvent;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.shared.ui.datefield.Resolution;
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.*;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
+@SpringComponent
 @UIScope
 @SpringUI
 public class EventModal extends FormLayout {
@@ -29,6 +30,8 @@ public class EventModal extends FormLayout {
 
     Button submit = new Button("Agregar");
     Button cancel = new Button("Cancelar");
+
+
 
     public EventModal(Date startDate, Date endDate) {
         start.setValue(startDate);
@@ -78,7 +81,6 @@ public class EventModal extends FormLayout {
 
         HorizontalLayout buttons = new HorizontalLayout(submit, cancel);
         buttons.setSpacing(true);
-        cancel.setClickShortcut(ShortcutAction.KeyCode.X);
 
         start.setCaption("Inicio:");
         end.setCaption("Fin:");
